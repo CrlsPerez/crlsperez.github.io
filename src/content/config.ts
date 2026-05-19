@@ -1,6 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 
-const nullable = z.string().optional().transform(val => val?.trim() || undefined);
+const nullable = z.string().nullish().transform(val => val?.trim() || undefined);
 
 const posts = defineCollection({
   type: 'content',
