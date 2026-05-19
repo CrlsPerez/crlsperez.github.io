@@ -1,18 +1,20 @@
 import { defineCollection, z } from 'astro:content';
 
+const nullable = z.string().optional().transform(val => val?.trim() || undefined);
+
 const posts = defineCollection({
   type: 'content',
   schema: z.object({
     type: z.enum(['image', 'video', 'text']).default('text'),
-    title: z.string().optional(),
+    title: nullable,
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     // Para posts de imagen
-    image: z.string().optional(),
-    alt: z.string().optional(),
+    image: nullable,
+    alt: nullable,
     // Para posts de video (YouTube)
-    youtube: z.string().optional(),
-    caption: z.string().optional(),
+    youtube: nullable,
+    caption: nullable,
   }),
 });
 
