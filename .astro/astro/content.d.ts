@@ -146,42 +146,49 @@ declare module 'astro:content' {
   slug: "00001-video";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "00002-video.md": {
 	id: "00002-video.md";
   slug: "00002-video";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "00003-imagen.md": {
 	id: "00003-imagen.md";
   slug: "00003-imagen";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "00004-video.md": {
 	id: "00004-video.md";
   slug: "00004-video";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "00005-imagen.md": {
 	id: "00005-imagen.md";
   slug: "00005-imagen";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 "00006-video.md": {
 	id: "00006-video.md";
   slug: "00006-video";
   body: string;
   collection: "posts";
-  data: any
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"00007-imagen.md": {
+	id: "00007-imagen.md";
+  slug: "00007-imagen";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
 };
 
@@ -193,5 +200,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("./../../src/content/config.js");
 }
