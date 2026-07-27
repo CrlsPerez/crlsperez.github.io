@@ -3,12 +3,15 @@ interface Props {
   currentPage: number;
   totalPages: number;
   baseUrl: string;
+  pagePrefix?: string;
 }
 
-const { currentPage, totalPages, baseUrl } = Astro.props;
+const { currentPage, totalPages, baseUrl, pagePrefix = baseUrl } = Astro.props;
 
 function pageUrl(page: number) {
-  return page === 1 ? baseUrl : `${baseUrl}/${page}`;
+  if (page === 1) return baseUrl;
+  const base = pagePrefix.endsWith('/') ? pagePrefix.slice(0, -1) : pagePrefix;
+  return `${base}/${page}`;
 }
 ---
 

@@ -19,5 +19,5 @@ const posts = allPosts.slice(0, POSTS_PER_PAGE);
   <div class="post-feed">
     {posts.map((post) => <PostCard post={post} />)}
   </div>
-  <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/" />
+  <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/" pagePrefix="/page" />
 </Layout>

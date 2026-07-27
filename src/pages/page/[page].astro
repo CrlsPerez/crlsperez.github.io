@@ -30,5 +30,5 @@ const { posts, currentPage, totalPages } = Astro.props;
   <div class="post-feed">
     {posts.map((post) => <PostCard post={post} />)}
   </div>
-  <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/" />
+  <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/" pagePrefix="/page" />
 </Layout>
