@@ -10,6 +10,8 @@ const { post, single = false } = Astro.props;
 const { type, title, date, tags, image, alt, youtube, caption } = post.data;
 const { Content } = await post.render();
 
+const isVideoFile = !!image && /\.(mp4|webm|ogg|mov)$/i.test(image);
+
 const formattedDate = date.toLocaleDateString('es-ES', {
   year: 'numeric',
   month: 'long',
@@ -18,7 +20,18 @@ const formattedDate = date.toLocaleDateString('es-ES', {
 ---
 
 <article class={single ? 'post-single' : 'post-card'}>
-  {type === 'image' && image && (
+  {type === 'image' && image && isVideoFile && (
+    <video
+      src={image}
+      class="post-image"
+      controls
+      playsinline
+      preload="metadata"
+      aria-label={alt ?? title ?? ''}
+    />
+  )}
+
+  {type === 'image' && image && !isVideoFile && (
     <a href={`/posts/${post.slug}`} class="post-image-link">
       <img
         src={image}
